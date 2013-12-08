@@ -19,7 +19,7 @@ public class GRCommonProxy {
 	 * 执行第2阶段的加载行为。
 	 */
 	public void init() {
-		LanguageRegistry.instance().addStringLocalization("ItemGroup.graph-revo", "Graphics Revolution"); //创造模式栏的名称
+		LanguageRegistry.instance().addStringLocalization("itemGroup.graph-revo", "Graphics Revolution"); //创造模式栏的名称
 	}
 	
 	/**

@@ -3,9 +3,12 @@
  */
 package cn.graphrevo.proxy;
 
+import cn.graphrevo.client.render.RenderFrozen;
+import cn.graphrevo.entity.EntityFrozen;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+
 /**
  * 客户端的加载代理。
- * @author WeAthFolD
  */
 public class GRClientProxy extends GRCommonProxy {
 
@@ -14,6 +17,7 @@ public class GRClientProxy extends GRCommonProxy {
 	}
 	
 	public void init() {
+		RenderingRegistry.registerEntityRenderingHandler(EntityFrozen.class, new RenderFrozen());
 		super.init();
 	}
 	

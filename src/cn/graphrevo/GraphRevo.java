@@ -2,10 +2,13 @@ package cn.graphrevo;
 
 import java.util.logging.Logger;
 
+import cn.graphrevo.entity.EntityFrozen;
 import cn.graphrevo.misc.CCTGraphRevo;
 import cn.graphrevo.proxy.GRCommonProxy;
+import cn.graphrevo.registry.GRItems;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
@@ -17,6 +20,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.EntityRegistry;
 
 /**
  * 这是整个Mod的主类，负责进行各种注册的调用，提供Mod的基本信息。
@@ -64,6 +68,7 @@ public class GraphRevo {
 		log.info("Starting GraphRevo " + GraphRevo.VERSION); //启动信息
 		log.info("Copyright (c) Lambda Innovation, 2013");
 		
+		GRItems.init();
 		proxy.preInit();
 	}
 	
@@ -73,6 +78,12 @@ public class GraphRevo {
 	@EventHandler()
 	public void init(FMLInitializationEvent event) {
 		proxy.init();
+		registerEntity(EntityFrozen.class, "entity_frozen");
+	}
+	
+	static int nextEntityID = 0;
+	private void registerEntity(Class<? extends Entity> entityClass, String name) {
+		EntityRegistry.registerModEntity(entityClass, name, ++nextEntityID, GraphRevo.instance, 32, 3, true);
 	}
 	
 	/**

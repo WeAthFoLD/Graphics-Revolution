@@ -3,7 +3,8 @@
  */
 package cn.graphrevo.registry;
 
-import cn.graphrevo.item.ItemFrozenWand;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cn.graphrevo.item.ItemFreezingWand;
 
 /**
  * Mod中所有物品实例的摆放位置。
@@ -11,10 +12,12 @@ import cn.graphrevo.item.ItemFrozenWand;
  */
 public class GRItems {
 
-	public static ItemFrozenWand frozenWand;
+	public static ItemFreezingWand freezingWand;
 	
 	public static void init() {
-		frozenWand = new ItemFrozenWand(7777);
+		freezingWand = new ItemFreezingWand(7777);
+		
+		GameRegistry.registerItem(freezingWand, "gr_frozenwand");
 	}
 
 }

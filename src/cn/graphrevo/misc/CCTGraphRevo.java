@@ -3,6 +3,7 @@
  */
 package cn.graphrevo.misc;
 
+import cn.graphrevo.registry.GRItems;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -19,10 +20,10 @@ public class CCTGraphRevo extends CreativeTabs {
 	public CCTGraphRevo(String label) {
 		super(label);
 	}
-	
+
 	@Override
-	public int getTabIconItemIndex() {
-		return Block.enchantmentTable.blockID;
+	public Item getTabIconItem() {
+		return GRItems.freezingWand;
 	}
 
 }

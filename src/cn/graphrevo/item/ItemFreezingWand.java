@@ -4,7 +4,7 @@
 package cn.graphrevo.item;
 
 import cn.graphrevo.GraphRevo;
-import cn.graphrevo.entity.EntityFrozen;
+import cn.graphrevo.entity.EntityFreezing;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -12,15 +12,15 @@ import net.minecraft.world.World;
 /**
  * ⑨的冰冻法杖。可以发出一个冰球实体，冷冻水面，造成范围伤害。
  */
-public class ItemFrozenWand extends GRGenericItem {
+public class ItemFreezingWand extends GRGenericItem {
 
 	/**
 	 * 法杖物品的构造器。
 	 */
-	public ItemFrozenWand(int par1) {
+	public ItemFreezingWand(int par1) {
 		super(par1);
-		this.setIAndU("graphrevo:frozen_wand"); //设置图标名和内部名称
-		this.addLocalization("Frozen Wand"); //添加物品名称
+		this.setIAndU("freezing_wand"); //设置图标名和内部名称
+		this.addLocalization("Freezing Wand"); //添加物品名称
 		this.setCreativeTab(GraphRevo.cct);
 		this.setMaxStackSize(1); //不可堆叠
 		this.setMaxDamage(15); //最高可使用15次
@@ -49,7 +49,7 @@ public class ItemFrozenWand extends GRGenericItem {
     		int damage = par4 / 5 + 8;
     		if(damage > 15) damage = 15; //计算伤害
     	
-    		world.spawnEntityInWorld(new EntityFrozen(world, entityPlayer, damage));
+    		world.spawnEntityInWorld(new EntityFreezing(world, entityPlayer, damage));
     	}
     	
     }

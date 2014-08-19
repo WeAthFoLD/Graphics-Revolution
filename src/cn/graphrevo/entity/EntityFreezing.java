@@ -6,16 +6,17 @@ package cn.graphrevo.entity;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumMovingObjectType;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 /**
  * 
  */
-public class EntityFrozen extends EntityThrowable {
+public class EntityFreezing extends EntityThrowable {
 
 	//伤害值
 	int damage = 10;
@@ -23,7 +24,7 @@ public class EntityFrozen extends EntityThrowable {
 	/**
 	 * 在客户端同步时被调用的构造器。
 	 */
-	public EntityFrozen(World par1World) {
+	public EntityFreezing(World par1World) {
 		super(par1World);
 		setSize(0.8F, 0.8F);
 	}
@@ -31,7 +32,7 @@ public class EntityFrozen extends EntityThrowable {
 	/**
 	 * 我们在服务端生成时调用的构造器。
 	 */
-	public EntityFrozen(World par1World, EntityLivingBase entityLivingBase, int dmg) {
+	public EntityFreezing(World par1World, EntityLivingBase entityLivingBase, int dmg) {
 		super(par1World, entityLivingBase);
 		this.damage = dmg;
 		Vec3 vec3 = entityLivingBase.getLookVec();
@@ -52,14 +53,14 @@ public class EntityFrozen extends EntityThrowable {
 		for(int x = beginX + 8; x >= beginX; x--) //替换水
 			for(int y = beginY + 3; y >= beginY; y--)
 				for(int z = beginZ + 8; z >= beginZ; z--) {
-					int blockID = worldObj.getBlockId(x, y, z);
-					if(blockID != 0) { //无差别冰冻方块
-						worldObj.setBlock(x, y, z, Block.ice.blockID, 0, 0x03);
+					Block block = worldObj.getBlock(x, y, z);
+					if(block != Blocks.air) { //无差别冰冻方块
+						worldObj.setBlock(x, y, z, Blocks.ice, 0, 0x03);
 					}
 				}
 		
 		//伤害实体
-		if(mop.typeOfHit == EnumMovingObjectType.ENTITY) {
+		if(mop.typeOfHit == MovingObjectType.ENTITY) {
 			mop.entityHit.attackEntityFrom(DamageSource.causeThornsDamage(this), damage);
 		}
 		
@@ -79,7 +80,7 @@ public class EntityFrozen extends EntityThrowable {
      */
     protected float getGravityVelocity()
     {
-        return 0.05F; //重力影响极小
+        return 0.02F; //重力影响极小
     }
 
 }

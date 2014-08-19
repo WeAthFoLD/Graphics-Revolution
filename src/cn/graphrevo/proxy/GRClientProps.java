@@ -8,6 +8,6 @@ import net.minecraft.util.ResourceLocation;
 public class GRClientProps {
 
 	public static final ResourceLocation 
-		TEX_FROZEN_MAGIC = new ResourceLocation("graphrevo:textures/entities/frozen_magic.png");
+		TEX_FROZEN_MAGIC = new ResourceLocation("graphrevo:textures/entities/freezing_magic.png");
 
 }

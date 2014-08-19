@@ -3,8 +3,8 @@
  */
 package cn.graphrevo.proxy;
 
-import cn.graphrevo.client.render.RenderFrozen;
-import cn.graphrevo.entity.EntityFrozen;
+import cn.graphrevo.client.render.RenderFreezing;
+import cn.graphrevo.entity.EntityFreezing;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 /**
@@ -17,7 +17,7 @@ public class GRClientProxy extends GRCommonProxy {
 	}
 	
 	public void init() {
-		RenderingRegistry.registerEntityRenderingHandler(EntityFrozen.class, new RenderFrozen());
+		RenderingRegistry.registerEntityRenderingHandler(EntityFreezing.class, new RenderFreezing());
 		super.init();
 	}
 	

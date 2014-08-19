@@ -3,25 +3,18 @@
  */
 package cn.graphrevo.item;
 
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.item.Item;
 
 /**
  * @author WeAthFolD
  */
 public class GRGenericItem extends Item {
-	
-	private String iconName = "";
 
 	public GRGenericItem(int par1) {
-		super(par1);
-	}
-	
-	protected void setIconName(String str) {
-		iconName = str;
+		super();
 	}
 	
 	/**
@@ -30,7 +23,7 @@ public class GRGenericItem extends Item {
 	 */
 	protected void setIAndU(String str) {
 		setUnlocalizedName(str);
-		setIconName(str);
+		setTextureName("graphrevo:" + str);
 	}
 	
 	/**
@@ -39,15 +32,4 @@ public class GRGenericItem extends Item {
 	protected final void addLocalization(String str) {
 		LanguageRegistry.addName(this, str);
 	}
-	
-	/**
-	 * 进行物品贴图的注册。
-	 */
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister iconRegister)
-    {
-    	if(!iconName.equals(""))
-    		itemIcon = iconRegister.registerIcon(iconName);
-    }
-
 }
